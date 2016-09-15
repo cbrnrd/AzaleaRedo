@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#603912</color>
+    <color name="colorPrimaryDark">#603912</color> <!-- TODO: make this darker (light color = primary 500, dark color = primary 700) -->
+    <color name="colorAccent">#FF4081</color>
+    <color name="LandonMainBrown">#603912</color>
+</resources>
