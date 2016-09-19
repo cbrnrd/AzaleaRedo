@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,24 +40,54 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add markers and pins to map
-        LatLng PACLoc = new LatLng(38.993492, -77.127302);
-        googleMap.addMarker(new MarkerOptions().position(PACLoc).title("PAC Auditorium"));
+        makePins(googleMap);
+    }
 
-        LatLng bearStore = new LatLng(38.993150, -77.126514);
-        googleMap.addMarker(new MarkerOptions().position(bearStore).title("Bear Store"));
+    public void makePins(GoogleMap googleMap) {
+        try {
+            googleMap.setMyLocationEnabled(true);// Add markers and pins to map
+            LatLng PACLoc = new LatLng(38.993492, -77.127302);
+            googleMap.addMarker(new MarkerOptions().position(PACLoc).title("PAC Auditorium").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
-        LatLng foodArea = new LatLng(38.993262, -77.125916);
-        googleMap.addMarker(new MarkerOptions().position(foodArea).title("Food/Dining area"));
 
-        LatLng shoppingArea = new LatLng(38.991232, -77.126806);
-        googleMap.addMarker(new MarkerOptions().position(shoppingArea).title("Shopping/Art Sale"));
+            LatLng bearStore = new LatLng(38.993150, -77.126514);
+            googleMap.addMarker(new MarkerOptions().position(bearStore).title("Bear Store"));
 
-        LatLng ridesArea = new LatLng(38.992470, -77.126827);
-        googleMap.addMarker(new MarkerOptions().position(ridesArea).title("Rides and Food"));
+            LatLng foodArea = new LatLng(38.993262, -77.125916);
+            googleMap.addMarker(new MarkerOptions().position(foodArea).title("Food/Dining area"));
 
-        LatLng cameraStartLocation = new LatLng(38.991946, -77.125693); //location but no pin, used for camera starting position
-        //CameraPosition cameraPosition = new CameraPosition.Builder().target(cameraStartLocation).zoom(12).build();
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(cameraStartLocation));
+            LatLng shoppingArea = new LatLng(38.991232, -77.126806);
+            googleMap.addMarker(new MarkerOptions().position(shoppingArea).title("Shopping/Art Sale"));
+
+            LatLng ridesArea = new LatLng(38.992470, -77.126827);
+            googleMap.addMarker(new MarkerOptions().position(ridesArea).title("Rides and Food"));
+
+            LatLng cameraStartLocation = new LatLng(38.991946, -77.125693); //location but no pin, used for camera starting position
+            //CameraPosition cameraPosition = new CameraPosition.Builder().target(cameraStartLocation).zoom(12).build();
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(cameraStartLocation));
+        } catch (SecurityException se) {
+            // Add markers and pins to map
+            LatLng PACLoc = new LatLng(38.993492, -77.127302);
+            googleMap.addMarker(new MarkerOptions().position(PACLoc).title("PAC Auditorium"));
+
+
+            LatLng bearStore = new LatLng(38.993150, -77.126514);
+            googleMap.addMarker(new MarkerOptions().position(bearStore).title("Bear Store"));
+
+            LatLng foodArea = new LatLng(38.993262, -77.125916);
+            googleMap.addMarker(new MarkerOptions().position(foodArea).title("Food/Dining area"));
+
+            LatLng shoppingArea = new LatLng(38.991232, -77.126806);
+            googleMap.addMarker(new MarkerOptions().position(shoppingArea).title("Shopping/Art Sale"));
+
+            LatLng ridesArea = new LatLng(38.992470, -77.126827);
+            googleMap.addMarker(new MarkerOptions().position(ridesArea).title("Rides and Food"));
+
+            LatLng cameraStartLocation = new LatLng(38.991946, -77.125693); //location but no pin, used for camera starting position
+            //CameraPosition cameraPosition = new CameraPosition.Builder().target(cameraStartLocation).zoom(12).build();
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(cameraStartLocation));
+        }
     }
 }
+
+
